@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ChirpController extends Controller
-{
+class ChirpController extends Controller {
     /**
      * Display a listing of the resource.
      */
@@ -33,7 +32,7 @@ class ChirpController extends Controller
         ];
         return view('home', ['chirps' => $chirps]);
     }
-}
+
 
     /**
      * Show the form for creating a new resource.
