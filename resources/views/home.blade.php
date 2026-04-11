@@ -1,22 +1,18 @@
 <x-layout>
     <x-slot:title>
-        Meta Title Here
+        Welcome
     </x-slot:title>
-
     <div class="max-w-2xl mx-auto">
-        @foreach ($chirps as $chipr) 
-        <div class="card bg-base-100 shadow mt-8">
-            <div class="card-body">
-                <div>
-                    <h1 class="text-3xl font-bold"> </h1>
-                    <p class="mt-4 text-base-content/60"><?=  $chipr['message']; ?>
-                        <?= $chipr['author']; ?>    </p>
+        @foreach ($chirps as $chirp)
+            <div class="card bg-base-100 shadow mt-8">
+                <div class="card-body">
+                    <div>
+                        <div class="font-semibold">{{ $chirp['author'] }}</div>
+                        <div class="mt-1">{{ $chirp['message'] }}</div>
+                        <div class="text-sm text-gray-500 mt-2">{{ $chirp['time'] }}</div>
+                    </div>
                 </div>
             </div>
-        </div>
-          @endforeach
-    </div>
-    <div class="this max-w-2xl mx-auto mt-6">
-        this is slot
+        @endforeach
     </div>
 </x-layout>
