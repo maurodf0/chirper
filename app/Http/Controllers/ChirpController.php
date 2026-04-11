@@ -3,33 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Chirp;
 
 class ChirpController extends Controller {
     /**
      * Display a listing of the resource.
      */
     public function index() {
-        $chirps = [
-            [
-            'id' => 2,
-            'author' => 'Mauro',
-            'message' => 'Studying Laravel',
-            'time' => '5 minutes ago',
-            ],
-               [
-            'id' => 3,
-            'author' => 'Mauro',
-            'message' => 'Studying Nuxt',
-            'time' => 'Now'
-            ],
 
-               [
-            'id'=> 1,
-            'author' => 'Mauro',
-            'message' => 'Studying Vue',
-            'time' => '10 minutes ago'
-            ],
-        ];
+    $chirps = Chirp::with('user')
+            ->latest()
+            ->take(50)  // Limit to 50 most recent chirps
+            ->get();
+            
         return view('home', ['chirps' => $chirps]);
     }
 
