@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Container\Attributes\Auth;
+use Illuminate\Http\Request;
+
+class Logout extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request)
+    {
+        $user = $request->user();
+        Auth::logout();
+
+        return redirect('/')->with('success', 'You have been logged out!');
+    }
+}
